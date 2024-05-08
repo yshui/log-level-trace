@@ -5,5 +5,5 @@ As the title suggests, this is a dump of my random thoughts. Well, that is the i
 
 ## Socials
 
-GitHub: [@yshui](http://github.com/yshui)
-Mastodon: [@yshui@fosstodon.org](https://fosstodon.org/@yshui)
+* GitHub: [@yshui](http://github.com/yshui)
+* Mastodon: [@yshui@fosstodon.org](https://fosstodon.org/@yshui)
