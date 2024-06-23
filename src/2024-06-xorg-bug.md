@@ -76,3 +76,7 @@ Besides that, this problem rarely happens despite picom's heavy use of the lock.
 ## Conclusion
 
 I actually don't have much more to say. Hopefully you found this little story interesting. I definitely recommend learning about eBPF and uprobe. They are amazing tools, and have a lot more uses beyond just debugging.
+
+* * *
+
+**Additional note 1:** Despite me claiming it is necessary to use the server lock in picom, there might be a way of updating the window tree reliably without it. I do want to get rid of the lock if I can, but I am still trying to figure it out.
