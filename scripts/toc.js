@@ -27,7 +27,7 @@
     }
     let rect = item.getBoundingClientRect();
     if (
-      rect.top < menu_bar_height + 100 &&
+      rect.top < menu_bar_height + 140 &&
       (lowest === null || rect.top > lowest.getBoundingClientRect().top)
     ) {
       lowest = item;
@@ -51,7 +51,7 @@
       });
     },
     {
-      rootMargin: `-${menu_bar_height}px 0px -90% 0px`,
+      rootMargin: `-${menu_bar_height}px 0px -75% 0px`,
     }
   );
   for (let item of document.querySelectorAll(".content main a")) {
