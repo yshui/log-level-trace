@@ -7,6 +7,7 @@ title = "yshui --log-level=trace"
 
 [output.html]
 default-theme = "coal"
+additional-js = [ "scripts/toc.js" ]
 
 [preprocessor.toc]
 command = "mdbook-toc"

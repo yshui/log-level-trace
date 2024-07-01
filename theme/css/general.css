@@ -126,11 +126,21 @@ h6:target::before {
 .toc li {
     display: flex;
 }
+
 .toc a {
     padding: 0.5em 1em;
     border-left: 2px solid var(--quote-border);
     display: block;
     width: 100%;
+    text-decoration: none !important;
+    color: var(--text-fg) !important;
+}
+.toc a.active {
+    color: var(--sidebar-active) !important;
+}
+
+.toc a:hover {
+    color: var(--sidebar-active) !important;
 }
 
 .toc a[aria-current="true"] {
