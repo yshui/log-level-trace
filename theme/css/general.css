@@ -143,7 +143,7 @@ h6:target::before {
     padding: 0 5px 50px 5px;
 }
 .content main {
-    margin-inline-start: 2em;
+    /*margin-inline-start: 2em;*/
     margin-inline-end: auto;
     max-width: var(--content-max-width);
 }
@@ -302,8 +302,20 @@ kbd {
         display: none;
     }
 }
-@media (max-width: 78em) {
+@media (width < 78em) {
     .toc {
         display: none;
+    }
+    .content main {
+        margin-inline-start: auto;
+    }
+}
+
+@media (width >= 78em) {
+    .content main:has(.toc) {
+        margin-inline-start: 2em;
+    }
+    .content main:not(:has(.toc)) {
+        margin-inline-start: auto;
     }
 }
