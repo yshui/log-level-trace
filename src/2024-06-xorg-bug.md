@@ -1,5 +1,11 @@
 # I found an 8 years old Xorg bug
 
+<div class="toc">
+
+<!-- toc -->
+
+</div>
+
 Let me set the right expectations first. This bug I found is actually not that complicated, it's very straightforward once you see what's going on. But I still think the process it took me to uncover this bug could be interesting. It's also kind of interesting that a simple bug stayed undiscovered for so long. I will speculate why that is later. Now let's start.
 
 ## The big X server lock

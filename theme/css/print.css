@@ -18,6 +18,10 @@
     padding: 0;
 }
 
+.content main {
+    margin-inline-start: 0 !important;
+}
+
 .page {
     overflow-y: initial;
 }
