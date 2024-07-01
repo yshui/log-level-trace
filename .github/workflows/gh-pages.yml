@@ -29,7 +29,8 @@ jobs:
         with:
           toolchain: stable
           profile: minimal
-      # Cache installation assets
+
+      # Cache cargo installation
       - name: Cache .cargo
         uses: actions/cache@v1
         with:
