@@ -36,11 +36,13 @@ jobs:
         with:
           path: ~/.cargo
           key: ${{ runner.os }}-dot-cargo
-      - name: Install mdbook-toc plugin
+      - name: Install tools via cargo
         uses: actions-rs/cargo@v1
         with:
           command: install
-          args: mdbook-toc
+          args: mdbook-toc cargo-update
+      - name: Update tools installed by cargo
+        run: cargo install-update -a
 
       - name: Setup Pages
         id: pages
