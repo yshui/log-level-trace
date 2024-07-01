@@ -1,5 +1,8 @@
 # Did GitHub Copilot really increase my productivity?
 
+Translations: [🇯🇵日本語](https://www.kaitoy.xyz/2024/06/24/is-copilot-good/)
+* * *
+
 I had free access to GitHub Copilot for about a year, I used it, got used to it, and slowly started to take it for granted, until one day it was taken away. I had to re-adapt to a life without Copilot, but it also gave me a chance to look back at how I used Copilot, and reflect - had Copilot actually been helpful to me?
 
 Copilot definitely feels a little bit magical when it works. It's like it plucked code straight from my brain and put it on the screen for me to accept. Without it, I find myself getting grumpy a lot more often when I need to write boilerplate code - "Ugh, Copilot would have done it for me!", and now I have to type it all out myself. That being said, the answer to my question above is a very definite "no, I am more productive without it". Let me explain.
