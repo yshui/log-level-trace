@@ -29,20 +29,40 @@ jobs:
         with:
           toolchain: stable
           profile: minimal
+      - name: Get current date
+        id: date
+        run: echo "::set-output name=date::$(date +'%Y-%m-%d')"
 
-      # Cache cargo installation
-      - name: Cache .cargo
-        uses: actions/cache@v1
+      - name: Cache .cargo registry
+        uses: actions/cache@v3
         with:
-          path: ~/.cargo
-          key: ${{ runner.os }}-dot-cargo
+          path: |
+            ~/.cargo/git
+            ~/.cargo/registry
+          key: cargo-registry-${{ steps.date.outputs.date }}
+          restore-keys: |
+            cargo-registry-${{ steps.date.outputs.date }}
+            cargo-registry-
+
+      - name: Update Cargo.lock
+        run: cargo update
+
+      - name: Cache .cargo/bin
+        uses: actions/cache@v3
+        id: cache-cargo-bin
+        with:
+          path: ~/.cargo/bin
+          key: ${{ runner.os }}-cargo-bin-${{ hashFiles('Cargo.lock') }}
+          restore-keys: |
+            ${{ runner.os }}-cargo-bin-${{ hashFiles('Cargo.lock') }}
+            ${{ runner.os }}-cargo-bin-
+
       - name: Install tools via cargo
         uses: actions-rs/cargo@v1
+        if: ${{ steps.cache-cargo-bin.outputs.cache-hit != 'true' }}
         with:
           command: install
-          args: mdbook-toc cargo-update
-      - name: Update tools installed by cargo
-        run: cargo install-update -a
+          args: --force mdbook-toc
 
       - name: Setup Pages
         id: pages
