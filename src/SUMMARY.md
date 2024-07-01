@@ -2,11 +2,12 @@
 
 ---
 
-# 2024-05
+# 2024
 
-* [Is Copilot good?](2024-05-copilot.md)
-* [Wishlist: dynamic Nix](2024-05-nix.md)
+- [June]()
+  - [8 years old Xorg bug](2024-06-xorg-bug.md)
 
-# 2024-06
+- [May]()
+  - [Is Copilot good?](2024-05-copilot.md)
+  - [Wishlist: dynamic Nix](2024-05-nix.md)
 
-* [8 years old Xorg bug](2024-06-xorg-bug.md)

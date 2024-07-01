@@ -4,3 +4,7 @@ language = "en"
 multilingual = false
 src = "src"
 title = "yshui --log-level=trace"
+
+[output.html]
+default-theme = "coal"
+
