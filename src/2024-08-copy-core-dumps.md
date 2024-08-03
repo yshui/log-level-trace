@@ -24,11 +24,11 @@ If this is you, I have good news for you.
 
 ## Um, actually
 
-Oh I _know_ what you are going to say. The reason I was getting this is because I don't have all the shared library files on the machine I tried to debug it on, right? So what I need to do is to figure out what shared library files were loaded by the program, copy them back, and make gdb load them somehow.
+Oh I _know_ what you are going to say. The reason I was getting this is because I didn't have all the shared library files on the machine I tried to debug it on, right? And what I need to do is to figure out what shared library files were loaded by the program, copy them back, and make gdb load them somehow.
 
-To find out what libraries are loaded, I need to attach gdb to the core file, and list them (`info proc mappings`). Then, I need to copy them while maintaining the relative directory structure (e.g. `/usr/lib/libc.so` needs to be copied to `/tmp/coredump_storage/usr/lib/libc.so`). And finally, when you load the core file, you need to ask gdb to load libraries from a different path with a combination of `set sysroot` and/or `set solib-search-path`.
+To find out what libraries are loaded, I would need to attach gdb to the core file and list them (`info proc mappings`). Then, I would need to copy them while maintaining the relative directory structure (e.g. `/usr/lib/libc.so` needs to be copied to `/tmp/coredump_storage/usr/lib/libc.so`). And finally, when I load the core file, I should ask gdb to load libraries from a different path with a combination of `set sysroot` and/or `set solib-search-path`.
 
-This sounds like a reasonable solution. But I don't want to manually do all these every time something crashes. Besides, not all CI platforms support connections to the CI machine, even when they do, they usually require the build to be run again with SSH enabled. By that time, the crash could be gone if it is not deterministic. 
+This sounds like a reasonable solution. But I don't want to manually do all these every time something crashes. Besides, not all CI platforms support connections to the CI machine, even when they do, they usually require the build to be run again with SSH enabled. By that time, the crash could be gone if it is not deterministic.
 
 So, all these have to be automated. Maybe I could've made it work with a hacky shell script that parses text output from gdb, and use a `.gdbinit` script so I don't need to set `sysroot` manually every time. For a reasonable person, that might be good enough.
 
