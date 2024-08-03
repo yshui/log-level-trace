@@ -94,7 +94,7 @@ Now, we are going to take a little detour. You see, finding out what libraries a
 
 As it turned out, yeah it totally could. There is such a thing called the "dynamic linker rendezvous" struct, that is located in a predefined location in memory. In it, there is a field `r_brk`, which is the memory location where the debugger should put a breakpoint. The breakpoint is usually an empty function, which the linker calls every time it is about to load a library. Whenever that breakpoint is hit, the debugger knows a new library is loaded.
 
-This feels like a hack, doesn't it. Well, when a hack becomes the standard, it is no longer a hack anymore.
+This feels like a hack, doesn't it? Well, when a hack becomes the standard, it is no longer a hack anymore.
 
 This is fascinating, but how is this related to what we wanted to do? So, how does the debugger know _what_ has just been loaded when the breakpoint is hit? The answer is that there is another field, `r_map`, in the rendezvous struct, which is a linked list of all the libraries currently loaded.
 
