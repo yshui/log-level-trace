@@ -127,6 +127,11 @@ h6:target::before {
 }
 .toc li {
     display: flex;
+    flex-direction: column;
+}
+
+.toc li ul {
+    visibility: collapse;
 }
 
 .toc a {

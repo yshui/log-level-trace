@@ -4,6 +4,9 @@
 
 # 2024
 
+- [August]()
+  - [Copying core dumps](2024-08-copy-core-dumps.md)
+
 - [June]()
   - [8 years old Xorg bug](2024-06-xorg-bug.md)
 
