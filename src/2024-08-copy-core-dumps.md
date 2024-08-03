@@ -110,6 +110,6 @@ And all _we_ have to do, is to expand the program's "memory" with a copy of this
 
 ## Conclusion
 
-Voilà! We've done it. I tested this with `gdb` and `lldb`, and it works. I now have a little tool that automatically copies shared libraries from a core dump, as well as updates the core dump file to look up these libraries from their new paths. Now I can debug core dumps on another machine without worrying about setting `sysroot`! How cool is that?
+Voilà! We've done it. I tested this with `gdb` and `lldb`, and it works. I now have a [little tool](https://github.com/yshui/coredump-copy) that automatically copies shared libraries from a core dump, as well as updates the core dump file to look up these libraries from their new paths. Now I can debug core dumps on another machine without worrying about setting `sysroot`! How cool is that?
 
 Is this all worth it. To be honest, probably not. But at least I have learned how the dynamic linker talks with the debugger. And now you have too!
