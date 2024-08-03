@@ -76,21 +76,21 @@ And as it turned out, no, it couldn't.
 
 I wrote a program to parse the core dump and look for this `NT_FILE` component, copy those files, and modify the core dump so the paths would point to where I want them to be. I tried it, it did not work. Frustratingly, gdb is still trying to look for the library files where they originally were, for some reason. 
 
-I could have stopped here. I already have a program that could automatically copy the libraries for me, and do a `set sysroot` in gdb really isn't that bad. But at this point, my curiosity was piqued, and I must find out what is actually going on.
+I could have stopped here. I already have a program that could automatically copy the libraries for me, and doing a `set sysroot` in gdb really isn't that bad. But at this point, my curiosity was piqued, and I must find out what is actually going on.
 
 ### Debugging the debugger
 
-I look at the core dump file again with a hex editor, and indeed, there are still paths to the original library file scattered around. But unlike `NT_FILE`, this time there seem to be no structure to it. Those paths are just... there.
+I look at the core dump file again with a hex editor, and indeed, there are still paths to the original library file scattered around. But unlike `NT_FILE`, this time there seems to be no structure to it. Those paths are just... there.
 
 How was the debugger able to find them then? I tried to read the code, but as you would expect, `gdb` does not have the easiest code base to get into. `lldb` is a little better, but I still didn't know where to start.
 
 So I attached a debugger, to the debugger. (I just think this is funny to say.)
 
-I want to give `lldb` praise, for how amazingly detailed its logs are. I was bare able to get anything out of `gdb`, on the other hand `lldb` literally tells you about every single little thing it does. With the help of that, and a debugger, I was finally able to narrow it down.
+I want to give `lldb` praise, for how amazingly detailed its logs are. I was barely able to get anything out of `gdb`, on the other hand `lldb` literally tells you about every single little thing it does. With the help of that, and a debugger, I was finally able to narrow it down.
 
 ### Rendezvous with the dynamic linker
 
-Now let's take a detour. You see, finding out what libraries are loaded isn't just a problem when you analysis a core dump. The debugger needs to be informed about that when they debug a live program too. There is no syscall for loading a library (there _was_ one, long story), it's all done in user space by something called the dynamic linker, which just open the file and map it into memory. So how could the debugger know when this happens? It couldn't just set a breakpoint in the dynamic linker, right?
+Now, we are going to take a little detour. You see, finding out what libraries are loaded isn't just a problem when you analyze a core dump. The debugger needs to be informed about that when they debug a live program too. There is no syscall for loading a library (there _was_ one, long story), it's all done in user space by something called the dynamic linker, which just opens the file and maps it into memory. So how could the debugger know when this happens? It couldn't just set a breakpoint in the dynamic linker, right?
 
 As it turned out, yeah it totally could. There is such a thing called the "dynamic linker rendezvous" struct, that is located in a predefined location in memory. In it, there is a field `r_brk`, which is the memory location where the debugger should put a breakpoint. The breakpoint is usually an empty function, which the linker calls every time it is about to load a library. Whenever that breakpoint is hit, the debugger knows a new library is loaded.
 
@@ -104,12 +104,12 @@ And that's exactly what we need.
 
 OK, so now we know how to find loaded libraries in a live program, how is this related to debugging a core dump?
 
-Well you see, what is a core dump, but a complete dump of the program's memory at the point of crash. Which is to say the rendezvous struct is dumped too. And all the debugger has to do, is pretending the core dump is just another live program, and reading the `r_map` linked list from its "memory".
+Well you see, what is a core dump, but a complete dump of the program's memory at the point of crash. Which is to say the rendezvous struct is dumped too. And all the debugger has to do, is pretend the core dump is just another live program, and read the `r_map` linked list from its "memory".
 
-And all _we_ have to do, is to expand the programs "memory" with a copy of this linked list, but with all the paths rewritten with the ones we want, then point the rendezvous struct to the linked list we just created.
+And all _we_ have to do, is to expand the program's "memory" with a copy of this linked list, but with all the paths rewritten with the ones we want, then point the rendezvous struct to the linked list we just created.
 
 ## Conclusion
 
-Voilà! We've done it. I tested this with `gdb` and `lldb`, and it works. I now have a little tool that automatically copies shared libraries from a core dump, as well as updates the core dump file to look up these libraries from their new paths. Now I can debug core dumps on a another machine without worrying about setting `sysroot`! How cool is that?
+Voilà! We've done it. I tested this with `gdb` and `lldb`, and it works. I now have a little tool that automatically copies shared libraries from a core dump, as well as updates the core dump file to look up these libraries from their new paths. Now I can debug core dumps on another machine without worrying about setting `sysroot`! How cool is that?
 
 Is this all worth it. To be honest, probably not. But at least I have learned how the dynamic linker talks with the debugger. And now you have too!
