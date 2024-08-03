@@ -6,7 +6,7 @@
 
 </div>
 
-Have you ever had this happen to you - you caught your code crashing in CI, which gave you a core dump. So you downloaded this core dump and tried to debug it, but all you got was this:
+Have you ever had this happen to you? you caught your code crashing in CI, which gave you a core dump. So you downloaded this core dump and tried to debug it, but all you got was this:
 
 ```
 (gdb) bt
