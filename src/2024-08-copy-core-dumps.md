@@ -102,7 +102,7 @@ And that's exactly what we need.
 
 ### Welcome back
 
-OK, so now we know how to find loaded libraries in a live program, how is this related to debugging a core dump?
+OK, so now we know how to find loaded libraries in a live program, how does that help us debug a core dump?
 
 Well you see, what is a core dump, but a complete dump of the program's memory at the point of crash. Which is to say the rendezvous struct is dumped too. And all the debugger has to do, is pretend the core dump is just another live program, and read the `r_map` linked list from its "memory".
 
