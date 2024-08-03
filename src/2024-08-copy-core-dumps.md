@@ -42,7 +42,7 @@ yeah... about that.
 
 ### So where is it actually stored?
 
-A core dump file is actually just a normal ELF file. So the natural thing to do first is look at it with `readelf`. And I was excited to see this within the outputs:
+A core dump file is actually just a normal ELF file. So the natural thing to do first is look at it with `readelf`. And I was excited to see this among the outputs:
 
 ```
   CORE                 0x0000331c       NT_FILE (mapped files)
