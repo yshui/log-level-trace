@@ -36,7 +36,7 @@ But I am not a reasonable person.
 
 ## Here we go
 
-So my thought process is this, gdb knows what libraries are loaded, so that information must be stored in the core dump somewhere and I just need to write a program to find it. And if my program was able to find it, it can't take that much extra work to modify it to point to somewhere else.
+So, this is how my thought process went: gdb knows what libraries are loaded, so that information must be stored in the core dump somewhere and I just need to write a program to find it. And if my program was able to find it, it can't take that much extra work to modify it to point to somewhere else.
 
 yeah... about that.
 
