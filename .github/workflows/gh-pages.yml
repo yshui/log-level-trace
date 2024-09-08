@@ -57,12 +57,19 @@ jobs:
             ${{ runner.os }}-cargo-bin-${{ hashFiles('Cargo.lock') }}
             ${{ runner.os }}-cargo-bin-
 
-      - name: Install tools via cargo
+      - name: Install mdbook-toc via cargo
         uses: actions-rs/cargo@v1
         if: ${{ steps.cache-cargo-bin.outputs.cache-hit != 'true' }}
         with:
           command: install
           args: --force mdbook-toc
+
+      - name: Install mdbook-admonish via cargo
+        uses: actions-rs/cargo@v1
+        if: ${{ steps.cache-cargo-bin.outputs.cache-hit != 'true' }}
+        with:
+          command: install
+          args: --force mdbook-admonish
 
       - name: Setup Pages
         id: pages
