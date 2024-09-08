@@ -4,6 +4,9 @@
 
 # 2024
 
+- [September]()
+  - [Fuzzing picom](2024-09-fuzzing.md)
+
 - [August]()
   - [Copying core dumps](2024-08-copy-core-dumps.md)
 
