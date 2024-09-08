@@ -84,7 +84,7 @@ So I guess now I can say with reasonable confidence that picom's window tree cod
 
 ## Conclusion
 
-First of all, X11 sucks. This might make some people mad, but this is a fact. If you are wondering, yes, wayland does solve _all_ of the problems mentioned above. If you see developers leaving X for wayland, things like this are the reason why.
+First of all, X11 sucks. This might make some people mad, but this is a fact. If you are wondering, yes, wayland does solve _all_ of the problems mentioned above. If you see developers leaving X for wayland, things like this are the reasons why.
 
 Fuzzing is an incredibly powerful tool for uncovering bugs. But only certain kinds of codebases are fuzzable. It is already an accepted fact that it is good practice to modularize and decouple your code. Now, you can add fuzzability to the long list of reasons why you should do that.
 
