@@ -78,7 +78,7 @@ And that's it! Now we are ready to fuzz picom!
 
 ### Results
 
-I was expecting to see some bugs going in, but I didn't expect how many bugs I was actually going to get! One after another, the fuzzer uncovers race conditions I forgot to consider. Just goes to show how difficult it is to do X programming correctly. Eventually, I managed to fix all the bugs found - some of which required significant design changes, and the fuzzer can run for days without finding any failures.
+I was expecting to see some bugs going in, but I didn't expect how many bugs I was actually going to get. One after another, the fuzzer uncovers race conditions I forgot to consider, which just goes to show how difficult it is to do X programming correctly. Eventually, I managed to fix all the bugs found - some of which required significant design changes, and the fuzzer can now run for days without finding any failures.
 
 So I guess now I can say with reasonable confidence that picom's window tree code is bug free!
 
