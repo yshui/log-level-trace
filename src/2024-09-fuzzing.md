@@ -68,17 +68,17 @@ I don't know if this is an established pattern, or what it is called. (Please le
 
 Anyway, I won't say this is always the best approach. But I think this is definitely a design pattern worth considering for doing things like this.
 
-### Making the test harness
+### Making the testing harness
 
-After all the refactoring is done, and the tree replication code isolated, there are 4 X requests left[^requests] that we still need to (partially) support. Considering this number would likely be in the hundreds otherwise, this is not too bad. But this does mean I needed to re-implement (a tiny) part of the X server for the test harness. I essentially needed to maintain a window tree - just the basic stuff.
+After all the refactoring is done, and the tree replication code isolated, there are 4 X requests left[^requests] that we still need to (partially) support. Considering this number would likely be in the hundreds otherwise, this is not too bad. But this does mean I needed to re-implement (a tiny) part of the X server for the testing harness. I essentially needed to maintain a window tree - just the basic stuff.
 
-But more importantly, the test harness also has to model the concurrency of the X server. This is what we set out to test, after all. This is a bit more tricky, I had to simulate the incoming and outgoing message queues, and randomly interleaved message deliveries with all the other processing.
+But more importantly, the testing harness also has to model the concurrency of the X server. This is what we set out to test, after all. This is a bit more tricky, I had to simulate the incoming and outgoing message queues, and randomly interleaved message deliveries with all the other processing.
 
 And that's it! Now we are ready to fuzz picom!
 
 ### Results
 
-I was expecting to see some bugs going in, but I didn't expect how many bugs I was actually going to get. One after another, the fuzzer uncovers race conditions I forgot to consider, which just goes to show how difficult it is to do X programming correctly. Eventually, I managed to fix all the bugs found - some of which required significant design changes, and the fuzzer can now run for days without finding any failures.
+I was expecting to see some bugs going in, but I didn't expect how many bugs I was actually going to get. One after another, the fuzzer uncovers race conditions I forgot to consider. Some of them were so complex, they took me quite some time to figure out - even with access to full traces of exactly what happened from my testing harness! Just imagine how hard it would be to debug these from a user's bug report - the mere thought makes me shudder. This just goes to show how difficult it is to do X programming correctly. Eventually, I managed to fix all the bugs found, though it required some significant design changes. Afterwards, the fuzzer ran for days without finding any new issues.
 
 So I guess now I can say with reasonable confidence that picom's window tree code is bug free!
 
