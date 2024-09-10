@@ -42,7 +42,7 @@ Luckily, there is a better way to do this. It's called eBPF and uprobe. Essentia
 
 Yeah, we live in the future now.
 
-So, I hooked into `GrabServer`, so I can who is currently grabbing the server; then I hooked into window destruction to print a stack trace every time a window is destroyed. When everything was ready I set it off and collected the logs. At first there were a couple of false positives, because some applications do legitimately grab the server and destroy windows. But after a while, I saw something that stood out:
+So, I hooked into `GrabServer`, so I can see who is currently grabbing the server; then I hooked into window destruction to print a stack trace every time a window is destroyed. When everything was ready I set it off and collected the logs. At first there were a couple of false positives, because some applications do legitimately grab the server and destroy windows. But after a while, I saw something that stood out:
 
 ```
 0x4755a0 DeleteWindow (window.c:1071)
