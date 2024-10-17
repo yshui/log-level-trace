@@ -93,6 +93,10 @@ jobs:
         continue-on-error: true
         run: cp -rv assets _site/
 
+      - name: Copy well-known
+        continue-on-error: true
+        run: cp -rv .well-known _site/
+
       - name: Upload
         uses: actions/upload-pages-artifact@v1
 
