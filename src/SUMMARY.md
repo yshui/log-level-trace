@@ -2,6 +2,10 @@
 
 ---
 
+# 2025
+- [Feburary]()
+  - [LLM Games](2025-02-llm-games.md)
+
 # 2024
 
 - [September]()
