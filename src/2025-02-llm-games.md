@@ -31,7 +31,7 @@ So, the jailbreak game is exactly the same thing. One side plays the defender, a
 This is simple: one side tries to persuade the other side to take its viewpoint. For any viewpoint, a game is played for either side of that viewpoint. (i.e. one for "A is true", another for "A is not true"). I divide the viewpoints into two categories:
 
 1. **uncontroversial:** These are indisputable facts, for example, earth is a globe, sun is powered by fusion, 2+2=4, etc. For these viewpoints, both players are updated after each game, with rewards determined based on the outcome and the factuality of the assigned view point.
-2. **controversial:** Everything not in (1). These are opinions, or results from unsettled research, etc. (not going to list any examples...)
+2. **controversial:** Everything not in (1). These are opinions, or results from unsettled research, etc. (not going to list any examples...).
    For these, the persuader is rewarded if it can successfully convince its opponent. And it will be rewarded even more if it can do the same for the opposite viewpoint. The persuadee is not updated for this case.
 
 ## Results?
