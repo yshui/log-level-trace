@@ -1,5 +1,11 @@
 # Games for Large Language Models to play against themselves
 
+```admonish danger
+**RETRACTION**: Ideas expressed here are flawed! Article left here for future reference.
+
+After some thought I realized I missed a very important third criteria, which made my games a lot less useful. Execrise for the reader: what important criteria is missing here?
+```
+
 So, self-play, that magical technique that allowed AlphaGo[^alphago] to soar past the best human players. Does it also work for language models?
 
 Recently, chain-of-thought (CoT) based reinforcement learning (RL) self-improvement has shown remarkable promise, and self-play feels to me like the logical next step. And unsurprisingly, many people thought the same. Various ideas have been proposed, and I have read a handful of them, yet I believe the ideas I have are still novel. Well, I am not an AI researcher, in fact, I am not a researcher at all. So I could easily have missed something, and all of these have already been done, which would be fantastic! Because then I wouldn't have to do all the hard work myself to figure out all these don't actually work XD.
