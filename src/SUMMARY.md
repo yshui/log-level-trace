@@ -4,7 +4,7 @@
 
 # 2025
 - [Feburary]()
-  - [LLM Games](2025-02-llm-games.md)
+  - [Games for LLM](2025-02-llm-games.md)
 
 # 2024
 
