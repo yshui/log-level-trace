@@ -3,6 +3,8 @@
 ---
 
 # 2025
+- [June]()
+  - [AI & Language](2025-06-ai-language.md)
 - [Feburary]()
   - [Games for LLM](2025-02-llm-games.md)
 
